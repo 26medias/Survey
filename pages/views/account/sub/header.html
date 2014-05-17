@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie lt-ie9 lt-ie8 lt-ie7 app sidebar sidebar-fusion sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 7]>    <html class="ie lt-ie9 lt-ie8 app sidebar sidebar-fusion sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if IE 8]>    <html class="ie lt-ie9 app sidebar sidebar-fusion sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if gt IE 8]> <html class="ie app sidebar sidebar-fusion sidebar-kis footer-sticky navbar-sticky"> <![endif]-->
+<!--[if !IE]><!--><html class="app sidebar sidebar-fusion sidebar-kis footer-sticky navbar-sticky"><!-- <![endif]-->
+	<head>
+		<title>{text:title}</title>
+
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+		
+		<base href="/">
+
+		<script type="text/javascript">
+			var userData = {json:user};
+			window.userData = userData;
+		</script>
+		
+		<!-- Global -->
+		<script data-id="App.Config">
+			var basePath = '',
+			commonPath = '../assets/',
+			rootPath = '../',
+			DEV = false,
+			componentsPath = '../assets/components/',
+			layoutApp = true,
+			module = 'admin';
+
+			var primaryColor = '#eb6a5a',
+			dangerColor = '#b55151',
+			successColor = '#609450',
+			infoColor = '#4a8bc2',
+			warningColor = '#ab7a4b',
+			inverseColor = '#45484d';
+
+			var themerPrimaryColor = primaryColor;
+			
+			var less = {
+				env:	'production'
+			};
+		</script>
+
+		{dependency:dependencies}
+		<script type="text/javascript" src="static/engine/project.js"></script>
+		<script type="text/javascript" src="static/scripts/account.js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
+
+	</head>
+	<body class="menu-right-hidden" ng-app="main">
+
+		<!-- Main Container Fluid -->
+		<div class="container-fluid menu-hidden">
+
+			<!-- Main Sidebar Menu -->
+			{include:account/sub/sidebar.html}
+
+
+			<!-- Content -->
+			<div id="content">
+				{include:account/sub/menu.html}
+
+				<div class="layout-app">

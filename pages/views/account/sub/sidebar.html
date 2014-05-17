@@ -1,0 +1,57 @@
+<div id="menu" class="hidden-print hidden-xs sidebar-blue sidebar-brand-primary" ng-controller="sidebarCtrl">
+
+
+	<div id="sidebar-fusion-wrapper">
+		<div id="brandWrapper">
+			<a href="index.html?lang=en" class="display-block-inline pull-left logo"><img src="static/bower_components/theme-account/images/logo/app-logo-style-default.png" alt=""></a>
+			<a href="index.html?lang=en"><span class="text">{{sidebar.title}}</span></a>
+		</div>
+		<div id="logoWrapper">
+			<div id="logo">
+
+				<a href="/manage" class="btn btn-sm btn-inverse"><i class="fa fa-fw icon-home-fill-1"></i></a>
+				<a href="/manage/account" class="btn btn-sm btn-inverse"><i class="fa fa-fw fa-cog"></i></a>
+				<a href="/manage/messages" class="btn btn-sm btn-inverse"><i class="fa fa-fw fa-envelope"></i><span class="badge pull-right badge-primary">2</span></a>
+				
+				<div class="innerTB" style="text-align:center;">
+					<select ng-if="surveys && surveys.length>0" name="" id="menu_switch" data-style="btn-inverse" id="" class="selectpicker margin-none dropdown-menu-light" data-container="body">
+						<option value="navigation_current_page" ng-repeat="survey in surveys">{{survey.name}}</option>
+					</select>
+					<a href="/manage/survey/create" style="margin-top:6px" ng-if="!surveys || surveys.length==0" class="btn btn btn-success"><i class="fa fa-plus"></i> Create a survey</a>
+				</div>
+			</div>
+		</div>
+
+		
+		<ul class="menu list-unstyled" id="navigation_current_page">
+
+			<li class="reset profile-avatar">
+				<div class="tab-content">
+					<div class="tab-pane active" id="profile_avatar_small">
+						<div class="innerL innerT innerB">
+							<div class="media innerL">
+								<div class="animated bounceIn pull-left">
+									<img ng-if="!user.facebook" src="static/bower_components/theme-account/images/avatar-50.png" style="width:48px;" alt="user" class="img-circle">
+									<img ng-if="user.facebook" ng-src="{{user.facebook.avatar.medium}}" style="width:48px;" alt="user" class="img-circle thumb">
+									
+									<i class="bg-success"></i>
+								</div>
+								<div class="media-body innerL half">
+									<h4 class="text-white">MosaicPro</h4>
+									<a href="#" class="btn btn-xs btn-inverse"><i class="fa fa-fw fa-check"></i> Free</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li><a href="/manage" class="glyphicons cardio"><i></i><span>Dashboard</span></a></li>
+			<li><a href="/manage/messages"><i class="fa fa-comments-o"></i><span>Messages</span></a></li>
+			<li><a href="/manage/survey/create"><i class="fa fa-plus"></i><span>New Survey</span></a></li>
+			<li><a href="/manage/surveys"><i class="fa fa-check-square-o"></i><span>Surveys</span></a></li>
+			<li class="active"><a href="/manage/account" class="glyphicons user"><i></i><span>Profile</span></a></li>
+			
+		</ul>
+	</div>
+</div>
+<!-- // Main Sidebar Menu END -->

@@ -1,0 +1,69 @@
+<div class="navbar hidden-print navbar-primary main" role="navigation" ng-controller="headerCtrl">
+	<div class="user-action user-action-btn-navbar pull-left border-right">
+		<button class="btn btn-sm btn-navbar btn-primary btn-stroke"><i class="fa fa-bars fa-2x"></i></button>
+	</div>
+	<div class="col-md-3 padding-none visible-md visible-lg">
+		<div class="input-group innerLR">
+			<input type="text" class="form-control input-sm" placeholder="Search stories ...">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+			</span>
+		</div><!-- /input-group -->
+	</div>
+	
+	<div class="user-action pull-right menu-right-hidden-xs menu-left-hidden-xs">
+		<div class="dropdown username hidden-xs pull-left">
+			<a class="dropdown-toggle " data-toggle="dropdown" href="#">
+				<span class="media margin-none">
+					<span class="pull-left">
+						<img ng-if="!user.facebook" src="static/bower_components/theme-account/images/avatar-35.png" alt="user" class="img-circle">
+						<img ng-if="user.facebook" ng-src="{{user.facebook.avatar.small}}" alt="user" class="img-circle">
+					</span>
+					<span class="media-body">
+						{{user.firstname}} {{user.lastname}} <span class="caret"></span>
+					</span>
+				</span>
+			</a>
+			<ul class="dropdown-menu pull-right">
+				<li><a href="/manage/account" class="glyphicons user"><i></i> Profile</a></li>
+				<li><a href="/manage" class="glyphicons list"><i></i>Dashboard</a></li>
+				<li><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	<ul class="notifications pull-right hidden-xs">
+		<li class="dropdown notif">
+			<a href="" class="dropdown-toggle"  data-toggle="dropdown"><i class="notif-block fa fa-comments-o"></i><span class="badge badge-primary">7</span></a>
+			<ul class="dropdown-menu chat media-list">
+				<li class="media">
+					<a class="pull-left" href="#"><img class="media-object thumb" src="static/bower_components/theme-account/images/people/100/15.jpg" alt="50x50" width="50"/></a>
+					<div class="media-body">
+						<span class="label label-default pull-right">5 min</span>
+						<h5 class="media-heading">Adrian D.</h5>
+						<p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</li>
+				<li class="media">
+					<a class="pull-left" href="#"><img class="media-object thumb" src="static/bower_components/theme-account/images/people/100/16.jpg" alt="50x50" width="50"/></a>
+					<div class="media-body">
+						<span class="label label-default pull-right">2 days</span>
+						<h5 class="media-heading">Jane B.</h5>
+						<p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</li>
+				<li class="media">
+					<a class="pull-left" href="#"><img class="media-object thumb" src="static/bower_components/theme-account/images/people/100/17.jpg" alt="50x50" width="50"/></a>
+					<div class="media-body">
+						<span class="label label-default pull-right">3 days</span>
+						<h5 class="media-heading">Andrew M.</h5>
+						<p class="margin-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					</div>
+				</li>
+				<li><a href="#" class="btn btn-primary"><i class="fa fa-list"></i> <span>View all messages</span></a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class="clearfix"></div>
+</div>
+<!-- // END navbar -->

@@ -1,0 +1,5 @@
+{
+	"verbose": true,
+	"ignore": ["pages/scripts/*", "pages/views/*", "pages/images/*", "pages/engine/*","*.git"],
+	"execMap": {}
+}

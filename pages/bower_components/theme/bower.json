@@ -1,0 +1,21 @@
+{
+	"name": "theme",
+	"version": "1.0.0",
+	"dependencies":	{
+		"underscore":	"latest",
+		"jquery":	 	"latest"
+	},
+	"main": [
+		"less/front/module.front.stylesheet-complete.sidebar_type.fusion.less",
+		"components/library/jquery/jquery-migrate.min.js",
+		"components/library/modernizr/modernizr.js",
+		"components/modules/admin/charts/flot/assets/lib/excanvas.js",
+		"components/plugins/browser/ie/ie.prototype.polyfill.js",
+		"conf.js",
+		"components/library/bootstrap/js/bootstrap.min.js",
+		"components/plugins/preload/pace/pace.min.js",
+		"components/core/js/preload.pace.init.js",
+		"components/plugins/holder/holder.js",
+		"components/modules/front/core/assets/js/front.core.init.js"
+	]
+}

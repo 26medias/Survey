@@ -1,0 +1,32 @@
+{
+	"name": "theme-account",
+	"version": "1.0.0",
+	"dependencies":	{
+		"underscore":	"latest",
+		"jquery":	 	"latest"
+	},
+	"main": [
+		"less/admin/module.admin.stylesheet-complete.sidebar_type.fusion.less",
+		"components/library/modernizr/modernizr.js",
+		"components/modules/admin/charts/flot/assets/lib/excanvas.js",
+		"components/plugins/browser/ie/ie.prototype.polyfill.js",
+		"conf.js",
+		"components/library/bootstrap/js/bootstrap.min.js",
+		"components/plugins/nicescroll/jquery.nicescroll.min.js",
+		"components/plugins/breakpoints/breakpoints.js",
+		"components/plugins/preload/pace/pace.min.js",
+		"components/core/js/preload.pace.init.js",
+		"components/common/forms/elements/bootstrap-datepicker/assets/lib/js/bootstrap-datepicker.js",
+		"components/common/forms/elements/bootstrap-datepicker/assets/custom/js/bootstrap-datepicker.init.js",
+		"components/common/forms/editors/wysihtml5/assets/lib/js/wysihtml5-0.3.0_rc2.min.js",
+		"components/common/forms/editors/wysihtml5/assets/lib/js/bootstrap-wysihtml5-0.0.2.js",
+		"components/common/forms/editors/wysihtml5/assets/custom/wysihtml5.init.js",
+		"components/common/forms/elements/bootstrap-select/assets/lib/js/bootstrap-select.js",
+		"components/common/forms/elements/bootstrap-select/assets/custom/js/bootstrap-select.init.js",
+		"components/core/js/sidebar.main.init.js",
+		"components/core/js/sidebar.collapse.init.js",
+		"components/core/js/sidebar.kis.init.js",
+		"components/core/js/core.init.js",
+		"components/core/js/animations.init.js"
+	]
+}

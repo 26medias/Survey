@@ -1,0 +1,356 @@
+{include:account/sub/header.html}
+
+<!-- row -->
+<div class="row row-app margin-none" ng-controller="mainCtrl">
+
+	<div class="col-md-3">
+
+		<div class="col-separator col-separator-first box col-unscrollable">
+
+			<div class="heading-buttons innerLR box">
+				<h4 class="margin-none innerTB pull-left">Survey</h4>
+				<div class="btn-xs pull-right btn btn-primary" ng-click="survey.add()"><i class="fa fa-fw fa-plus"></i> New Question</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="col-separator-h"></div>
+			<div class="bg-primary innerAll half text-center" ng-if="survey.questions.length>0">{{survey.questions.length}} questions</div>
+			<div class="bg-primary innerAll half text-center" ng-if="survey.questions.length==0">No questions in the survey</div>
+
+			<div class="col-separator-h box"></div>
+
+			<div class="box col-unscrollable">
+				<div class="col-table">
+
+					<div class="col-table-row">
+						<div class="col-app col-unscrollable">
+							<div class="col-app hasNiceScroll animated fadeInDown" style="overflow-y: hidden;" tabindex="5001">
+
+								<ul class="list-group list-group-1 borders-none margin-none">
+									<li ng-click="survey.select(question, $index)" style="cursor:pointer;" ng-repeat="question in survey.questions" class="list-group-item animated fadeInUp" style="visibility: visible;">
+										<div class="media innerAll">
+											<button class="pull-right btn btn-primary btn-stroke btn-xs"><i class="fa fa-pencil"></i></button>
+											<h3 class="fa fa-check-square pull-left thumb"></h3>
+											<div class="media-body">
+												<h5 class="media-heading strong">{{question.label}}</h5>
+												<ul class="list-unstyled">
+													<li><i class="fa fa-arrow-right"></i> {{question.type}}</li>
+												</ul>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+
+								<div class="col-separator-h box"></div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-9">
+		
+		
+		
+		<div class="col-separator col-separator-first box hasNiceScroll" style="overflow-y: hidden;" tabindex="5000">
+			<div ng-if="survey.questions.length>0">
+				<div class="innerAll border-bottom">
+					<!--<div class="pull-left innerL">
+						<div class="btn btn-success btn-sm strong"><i class="fa fa-fw icon-paperclip"></i> Preview</div>
+					</div>-->
+					<div class="pull-right btn btn-primary btn-sm strong"><i class="fa fa-question-circle"></i> Help</div>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="col-separator-h"></div>
+				<h4 class="innerAll bg-white margin-none border-bottom">Question #{{survey.selectedIndex+1}}</h4>
+				<div class="col-separator-h"></div>
+				
+	
+				<div class="bg-gray innerAll">
+					<form role="form" class="form-horizontal innerR">
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="to">Label</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" ng-model="survey.selected.label">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="Bcc">Question type</label>
+							<div class="col-sm-6">
+								<select class="selectpicker col-md-9" style="display: none;" angular-select="" ng-model="survey.selected.type">
+									<option value="varchar">Open text</option>
+									<option value="checkbox">Checkbox</option>
+									<option value="radio">Radio</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="Bcc">Mandatory</label>
+							<div class="col-sm-6">
+								<select class="selectpicker" style="display: none;" angular-select="" ng-model="survey.selected.required">
+									<option ng-value="true">Yes, this question is mandatory</option>
+									<option ng-value="false">No, this question is optional</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="clearfix"></div>
+					</form>
+				</div>
+				
+				<div class="col-separator-h"></div>
+				
+				<div class="innerAll text-center">
+					<a class="btn btn-default" href="email.html?lang=en"><i class="fa fa-times-circle"></i> Delete</a>
+					<a class="btn btn-primary" href="email.html?lang=en"><i class="fa fa-save"></i> Save</a>
+				</div>
+			</div>
+			<div ng-if="survey.questions.length==0">
+				<h4 class="innerAll bg-white margin-none border-bottom">
+					Create a new question to start.
+				</h4>
+				
+				<div class="col-separator-h"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+
+	window.meanEngine.get('app').controller('mainCtrl', function ($scope) {
+		$scope.user = userData;
+
+		$scope.survey = {
+			questions:	[],
+			add:		function() {
+				$scope.survey.create('varchar');
+			},
+			selectedIndex:	0,
+			selected:	{
+					name: 	_.uniqueId("question_"),
+					label: 	"Question label",
+					type: 	"varchar",
+					required: true
+			},
+			select:	function(question, index) {
+					$scope.survey.selected = question;
+					$scope.survey.selectedIndex = index;
+					console.log("index",index);
+			},
+			create:		function(type) {
+				switch (type) {
+					default:
+					case "varchar":
+						var data = {
+							name: 	_.uniqueId("question_"),
+							label: 	"Question label",
+							type: 	"varchar",
+							required: true
+						};
+					break;
+					case "radio":
+						var data = {
+							name: 	_.uniq("question_"),
+							label: 	"Question label",
+							type: 	"radio",
+							required: true,
+							list:	[]
+						};
+					break;
+					case "checkbox":
+						var data = {
+							name: 	_.uniq("question_"),
+							label: 	"Question label",
+							type: 	"radio",
+							required: true,
+							list:	[]
+						};
+					break;
+				}
+				
+				$scope.survey.selected 		= data;
+				$scope.survey.questions.push(data);
+				$scope.survey.selectedIndex = $scope.survey.questions.length-1;
+
+			}
+		};
+
+
+
+
+
+		$scope.form 		= [];
+		$scope.formErrors 	= {};
+		$scope.indexedform 	= {};
+
+		$scope.selected 	= {
+			list:	[]
+		};
+
+		$scope.$watch("form", function(newValue,oldValue) {
+			$("#source").html(angular.toJson($scope.form,true));
+
+			// Re-index the questions by name
+			$scope.indexedform = _.groupBy($scope.form, function(question) {
+				return question.name;
+			});
+
+			// Recreate the condition function
+			_.each($scope.form, function(item) {
+				if (item.editor && item.editor.conditions && item.editor.conditions.length > 0) {
+					var conditions = [];
+					_.each(item.editor.conditions, function(condition) {
+						conditions.push("new field('"+condition.question+"')."+condition.operator+"('"+condition.value+"')");
+					});
+					item.condition = "function (field) {return "+conditions.join(' && ')+";}";
+				}
+			});
+		}, true);
+
+		$scope.addQuestion = function(type) {
+			var item = {
+				name:		"question_name",
+				label:		"Question label",
+				type:		type,
+				required:	true
+			};
+			switch (type) {
+				case "checkbox":
+				case "radio":
+				item.list = [{
+					value:	"1",
+					label:	"Value #1"
+				},{
+					value:	"2",
+					label:	"Value #2"
+				}];
+				break;
+			}
+
+			$scope.form.push(item);
+
+		}
+		$scope.removeQuestion = function(idx){
+			$scope.form.splice(idx,1);
+		}
+		$scope.moveQuestion = function(idx, dir){
+			var newPos = idx+dir;
+			if (newPos < 0 || newPos>=$scope.form.length) {
+				return false;
+			}
+			var removed = $scope.form.splice(idx, 1);
+			$scope.form.splice(newPos, 0, removed[0]);
+			return true;
+		}
+
+		$scope.addAnswer = function() {
+			$scope.selected.list.push({
+				value:		"answer_value",
+				label:		"Answer Label",
+			});
+		}
+		$scope.removeAnswer = function(idx){
+			$scope.selected.list.splice(idx,1);
+		}
+		$scope.moveAnswer = function(idx, dir){
+			var newPos = idx+dir;
+			if (newPos < 0 || newPos>=$scope.selected.list.length) {
+				return false;
+			}
+			var removed = $scope.selected.list.splice(idx, 1);
+			$scope.selected.list.splice(newPos, 0, removed[0]);
+			return true;
+		}
+
+		$scope.editAnswers = function(idx){
+			$scope.selected_index = idx;
+			$scope.selected = $scope.form.slice(idx,idx+1)[0];
+			$('#answerModal').modal({
+				show:	true
+			});
+		}
+		$scope.editConditions = function(idx){
+			$scope.selected_index = idx;
+			$scope.selected = $scope.form.slice(idx,idx+1)[0];
+			if (!$scope.selected.editor) {
+				$scope.selected.editor = {};
+			}
+			if (!$scope.selected.editor.conditions) {
+				$scope.selected.editor.conditions = [];
+			}
+			$('#conditionModal').modal({
+				show:	true
+			});
+		}
+		$scope.removeCondition = function(idx){
+			$scope.selected.editor.conditions.splice(idx,1);
+		}
+		$scope.saveQuestion = function(){
+			$scope.form[$scope.selected_index] = _.extend({},$scope.selected);
+		}
+
+		$scope.addCondition = function(idx){
+			if (!$scope.selected.editor) {
+				$scope.selected.editor = {};
+			}
+			if (!$scope.selected.editor.conditions) {
+				$scope.selected.editor.conditions = [];
+			}
+			$scope.selected.editor.conditions.push({
+				question:	"",
+				operator:	"",
+				value:		""
+			});
+		}
+
+		$scope.previewForm = function(){
+			$('#previewModal').modal({
+				show:	true
+			});
+			$("#container").empty();
+			var jform = new window.jform().build($("#container"), {
+				form:		JSON.parse(angular.toJson($scope.form)),
+				submit:		$("#submit"),
+				onSubmit:	function(data, jform) {
+					jform.bootstrap.resetErrors();
+					alert(JSON.stringify(data, null, 4));
+				},
+				onError:	function(data, jform) {
+					jform.bootstrap.showErrors();
+					alert("You have errors on the form.");
+				},
+				onInit:	function(jform) {
+					// Display the form errors if there are any
+					$scope.formErrors = _.countBy(jform.formErrors, function(item) {
+						return item;
+					});
+				}
+			});
+		}
+	});
+	
+	window.meanEngine.get('app').directive('flipdisplay', function() {
+		function link(scope, element, attrs) {
+			
+		}
+	
+		return {
+			link: link,
+			scope:	{
+				display:	'@',
+			}
+		};
+	})
+</script>
+
+
+{include:account/sub/footer.html}

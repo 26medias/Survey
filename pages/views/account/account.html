@@ -1,0 +1,311 @@
+{include:account/sub/header.html}
+
+<style type="text/css">
+	.link_btn {
+		margin-bottom:	2px;
+		width:			170px;
+	}
+</style>
+
+<div class="row row-app margin-none" ng-controller="mainCtrl">
+
+	<!-- col -->
+	<div class="col-md-12">
+
+		<!-- col-separator -->
+		<div class="col-separator col-separator-first box">
+			
+			<!-- Tabs -->
+			<div class="widget widget-tabs widget-tabs-social-account widget-tabs-responsive">
+
+				<!-- Tabs Heading -->
+				<div class="widget-head">
+					<ul>
+						<li class="active"><a class="glyphicons user" href="#tabAccount" data-toggle="tab"><i></i><span>Account</span></a></li>
+						<li><a class="glyphicons credit_card" href="#tabPayments" data-toggle="tab"><i></i><span>Payment</span></a></li>
+						<li><a class="glyphicons lock" href="#tabPassword" data-toggle="tab"><i></i><span>Password</span></a></li>
+					</ul>
+				</div>
+				<!-- // Tabs Heading END -->
+				<div class="col-separator-h box"></div>
+				<div class="widget-body">
+					<div class="tab-content">
+
+						<!-- Tab content -->
+						<div id="tabAccount" class="tab-pane active widget-body-regular padding-none border-none reset-components">
+							<!-- Widget -->
+							<div class="widget widget-tabs border-bottom-none">
+
+								<!-- Widget heading -->
+								<div class="widget-head">
+									<ul>
+										<li class="active"><a class="glyphicons edit" href="#account-details" data-toggle="tab"><i></i>Account details</a></li>
+									</ul>
+								</div>
+								<!-- // Widget heading END -->
+
+								<div class="widget-body">
+									<form class="form-horizontal">
+										<div class="tab-content">
+
+											<!-- Tab content -->
+											<div class="tab-pane active" id="account-details">
+
+												<div class="row">
+													
+													<div class="col-md-4">
+														
+														<div class="form-group margin-none innerB">
+															<label class="col-md-3 control-label">Firstname</label>
+															<div class="col-md-9">
+																<input type="text" placeholder="Firstname" ng-model="user.firstname" class="form-control" />
+															</div>
+														</div>
+														
+														<div class="form-group margin-none innerB">
+															<label class="col-md-3 control-label">Lastname</label>
+															<div class="col-md-9">
+																<input type="text" placeholder="Lastname" ng-model="user.lastname" class="form-control" />
+															</div>
+														</div>
+														
+														<div class="separator top">
+															<button ng-click="update()" type="submit" class="btn btn-primary"><i class="fa fa-fw fa-check-square-o"></i> Save changes</button>
+														</div>
+														
+													</div>
+													
+													<div class="col-md-5">
+														
+														<div class="form-group margin-none innerB">
+															<label class="col-md-3 control-label">Gender</label>
+															<div class="col-md-9">
+																<select class="form-control selectpicker" ng-model="user.gender">
+																	<option value="male">Male</option>
+																	<option value="female">Female</option>
+																</select>
+															</div>
+														</div>
+														
+														<div class="form-group margin-none innerB">
+															<label class="col-md-3 control-label">Email</label>
+															<div class="col-md-9">
+																<input type="text" placeholder="Email" ng-model="user.email" class="form-control" />
+															</div>
+														</div>
+
+													</div>
+													
+													<div class="col-md-3">
+														<div class="box-generic padding-none">
+															<h5 class="strong innerAll border-bottom margin-none bg-gray">Connect your social accounts</h5>
+															<div class="innerAll inner-2x" style="text-align:center;">
+																<a ng-if="!user.facebook" href="/auth/facebook" class="btn btn-inverse btn-icon-stacked link_btn">
+																	<i class="fa fa-2x fa-facebook"></i>
+																	<span>Connect your<br />Facebook Account</span>
+																</a>
+																<a ng-if="user.facebook" href="/unauth/facebook" class="btn btn-default btn-icon-stacked link_btn">
+																	<i class="fa fa-2x fa-facebook"></i>
+																	<span>Disconnect your<br />Facebook Account</span>
+																</a>
+																
+																<a ng-if="!user.twitter" href="/auth/twitter" class="btn btn-inverse btn-icon-stacked link_btn">
+																	<i class="fa fa-2x fa-twitter"></i>
+																	<span>Connect your<br />Twitter Account</span>
+																</a>
+																<a ng-if="user.twitter" href="/unauth/twitter" class="btn btn-default btn-icon-stacked link_btn">
+																	<i class="fa fa-2x fa-twitter"></i>
+																	<span>Disconnect your<br />Twitter Account</span>
+																</a>
+																
+																<a ng-if="!user.linkedin" href="/auth/linkedin" class="btn btn-inverse btn-icon-stacked link_btn">
+																	<i class="fa fa-2x fa-linkedin"></i>
+																	<span>Connect your<br />Linkedin Account</span>
+																</a>
+																<a ng-if="user.linkedin" href="/unauth/linkedin" class="btn btn-default btn-icon-stacked link_btn">
+																	<i class="fa fa-2x fa-linkedin"></i>
+																	<span>Disconnect your<br />Linkedin Account</span>
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- // Tab content END -->
+
+											
+										</div>
+									</form>
+								</div>
+							</div>
+							<!-- // Widget END -->
+
+
+
+						</div>
+						<!-- // Tab content END -->
+
+						<!-- Tab content -->
+						<div id="tabPayments" class="tab-pane innerAll">
+							<h4 class="innerTB">Payment &amp; Billing Information</h4>
+							<div class="row">
+								<div class="col-md-9">
+									<div class="box-generic bg-primary padding-none">
+										<div class="innerAll half pull-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-times "></i></a></div>
+										<h4 class="text-white strong margin-none innerAll pull-left"><i class="fa fa-credit-card innerR"></i> XXXX XXXX XXXX XXXX 1209</h4>
+										<div class="clearfix"></div>
+									</div>
+									<div class="box-generic padding-none">
+										<div class="pull-right btn-group btn-group-sm innerAll half">
+											<a href="#" class="btn btn-default"><i class="fa fa-check "></i> Make Primary</a>
+											<a href="" class="btn btn-default"><i class="fa fa-times"></i></a>
+										</div>
+										<h4 class="strong margin-none innerAll pull-left"><i class="fa fa-credit-card innerR"></i> XXXX XXXX XXXX XXXX 1209</h4>
+										<div class="clearfix"></div>
+									</div>
+									<div class="box-generic padding-none">
+										<h5 class="strong innerAll border-bottom margin-none bg-gray">Add New Card</h5>
+										<div class="innerAll inner-2x">
+											<form action="../shop/checkout_confirmation.html?lang=en">
+												<div class="form-group">
+													<label for="exampleInputEmail1">Card Number</label>
+													<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Card Number">
+												</div>
+												<div class="form-group">
+													<div class="row">
+														<div class="col-xs-6">
+															<label for="exampleInputPassword1">Expiry Date</label>
+															<div class="row margin-none">
+																<div class="col-xs-6 padding-none">
+																	<select class="form-control selectpicker">
+																		<option>1</option>
+																		<option>2</option>
+																		<option>3</option>
+																		<option>4</option>
+																		<option>5</option>
+																		<option>6</option>
+																		<option>7</option>
+																		<option>8</option>
+																		<option>9</option>
+																		<option>10</option>
+																		<option>11</option>
+																	</select>
+																</div>
+																<div class="col-xs-6 padding-none">
+																	<select class="form-control selectpicker">
+																		<option>2013</option>
+																		<option>2014</option>
+																		<option>2015</option>
+																		<option>2016</option>
+																		<option>2017</option>
+																		<option>2018</option>
+																	</select>
+																</div>
+															</div>
+														</div>
+														<div class="col-xs-6">
+															<label for="exampleInputPassword1">Security Code <i class="fa fa-question-circle"></i></label>
+															<input type="password" class="form-control" placeholder="CVV / CVV2">
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="exampleInputEmail1">Cardholder Name</label>
+													<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name on Card">
+												</div>
+												<div class="text-right">
+													<button type="submit" class="btn btn-primary">Make a Payment </button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="box-generic strong">
+										<i class="fa fa-user fa-3x pull-left text-faded"></i> Adrian Demian <br/><small class="text-faded">12 Nov 2013</small>
+									</div>
+									<div class="box-generic padding-none">
+										<div class="innerAll border-bottom">
+											<a href="" class="pull-right text-primary"><i class="fa fa-pencil"></i></a>
+											<h4 class="panel-title strong">Billing Address </h4>
+										</div>
+										<div class="innerAll">
+											<i class="fa fa-building pull-left fa-3x"></i> <span>129 Longford Terrace, Dublin, Ireland</span>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!-- // Tab content END -->
+
+						
+						<!-- Tab content -->
+						<div id="tabPassword" class="tab-pane innerAll">
+							<h4 class="innerTB">Change your Password</h4>
+							<form class="form-horizontal innerT " role="form">
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">Current Password</label>
+									<div class="col-sm-6">
+										<input type="email" class="form-control" id="inputEmail3" placeholder="Type here">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label">New Password</label>
+									<div class="col-sm-6">
+										<input type="password" class="form-control" id="inputPassword3" placeholder="Type here">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="submit" class="btn btn-primary">Save Changes <i class="fa fa-check"></i></button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+						<!-- // Tab content END -->
+
+					</div>
+				</div>
+			</div>
+			<!-- // Tabs END -->
+
+
+
+
+
+		</div>
+		<!-- // END col-separator -->
+
+	</div>
+	<!-- // END col -->
+
+</div>
+<!-- // END row-app -->
+<script type="text/javascript">
+window.meanEngine.get('app').controller('mainCtrl', function ($scope) {
+	$scope.user = userData;
+	
+	$scope.update = function() {
+		window.meanEngine.service('api').apicall({
+			method:		"user.update",
+			data:		{
+				profile:	{
+					firstname:	$scope.user.firstname,
+					lastname:	$scope.user.lastname,
+					email:		$scope.user.email,
+					gender:		$scope.user.gender
+				}
+			},
+			callback:	function(response) {
+				console.log("response",response);
+			}
+		});
+	}
+});
+</script>
+
+
+{include:account/sub/footer.html}
